@@ -6,6 +6,17 @@ describe('calculator', function () {
     calculator = new Calculator()
   });
 
+  it("can clear input", () => {
+    calculator.numberClick(3);
+    calculator.operatorClick("*");
+    calculator.numberClick(5);
+    calculator.clearClick();
+
+    var expected = 0;
+    var result = calculator.runningTotal;
+    assert.strictEqual(result, expected);
+  })
+
   it("can multiply 3x5 and get 15", function(){
 
     calculator.numberClick(3);
