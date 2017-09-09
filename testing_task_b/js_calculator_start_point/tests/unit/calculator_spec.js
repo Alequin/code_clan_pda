@@ -15,6 +15,50 @@ describe('calculator', function () {
     assert.strictEqual(result, expected);
   });
 
+  it("can subtract the previous total with a given number", () => {
+    calculator.previousTotal = 10;
+    calculator.subtract(5);
+
+    var expected = 5;
+    var result = calculator.runningTotal;
+    assert.strictEqual(result, expected);
+  });
+
+  it("can multiply the previous total with a given number", () => {
+    calculator.previousTotal = 10;
+    calculator.multiply(5);
+
+    var expected = 50;
+    var result = calculator.runningTotal;
+    assert.strictEqual(result, expected);
+  });
+
+  it("can divide the previous total with a given number", () => {
+    calculator.previousTotal = 10;
+    calculator.divide(5);
+
+    var expected = 2;
+    var result = calculator.runningTotal;
+    assert.strictEqual(result, expected);
+  });
+
+  it("can click number and append current input", () => {
+    calculator.numberClick(3);
+    var expected = 3;
+    var result = calculator.runningTotal;
+    assert.strictEqual(result, expected);
+
+    calculator.numberClick(6);
+    var expected = 36;
+    var result = calculator.runningTotal;
+    assert.strictEqual(result, expected);
+
+    calculator.numberClick(9);
+    var expected = 369;
+    var result = calculator.runningTotal;
+    assert.strictEqual(result, expected);
+  });
+
   it("can clear input", () => {
     calculator.numberClick(3);
     calculator.operatorClick("*");
