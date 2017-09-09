@@ -6,6 +6,15 @@ describe('calculator', function () {
     calculator = new Calculator()
   });
 
+  it("can add the previous total with a given number", () => {
+    calculator.previousTotal = 10;
+    calculator.add(5);
+
+    var expected = 15;
+    var result = calculator.runningTotal;
+    assert.strictEqual(result, expected);
+  });
+
   it("can clear input", () => {
     calculator.numberClick(3);
     calculator.operatorClick("*");
@@ -15,7 +24,7 @@ describe('calculator', function () {
     var expected = 0;
     var result = calculator.runningTotal;
     assert.strictEqual(result, expected);
-  })
+  });
 
   it("can multiply 3x5 and get 15", function(){
 
