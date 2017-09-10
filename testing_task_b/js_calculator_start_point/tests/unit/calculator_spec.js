@@ -70,6 +70,37 @@ describe('calculator', function () {
     assert.strictEqual(result, expected);
   });
 
+  it("does nothing if only operators are clicked", () => {
+    calculator.operatorClick("*");
+    calculator.operatorClick("+");
+    calculator.operatorClick("=");
+    calculator.operatorClick("-");
+    calculator.operatorClick("/");
+
+    var expected = 0;
+    assert.strictEqual(calculator.runningTotal, expected);
+    assert.strictEqual(calculator.previousTotal, expected);
+  });
+
+  it("calculates the previous sum on each operator click", () => {
+    let expected;
+    let result;
+
+    calculator.numberClick(2);
+    calculator.operatorClick("*");
+    calculator.numberClick(3);
+    calculator.operatorClick("+");
+    expected = 6;
+    result = calculator.previousTotal;
+    assert.strictEqual(result, expected);
+
+    calculator.numberClick(3);
+    calculator.operatorClick("+");
+    expected = 9;
+    result = calculator.runningTotal;
+    assert.strictEqual(result, expected);
+  });
+
   it("can multiply 3x5 and get 15", function(){
 
     calculator.numberClick(3);
