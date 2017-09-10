@@ -91,7 +91,7 @@ describe('calculator functionality', function() {
     expect(running_total.getAttribute('value')).to.eventually.equal('0');
   })
 
-  it('should clear input if dividing by zero (on on operator press)', function(){
+  it('should clear input if dividing by zero (on operator press)', function(){
     running_total = element(by.css('#running_total'));
 
     element(by.css('#number2')).click();
